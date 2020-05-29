@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 class Staty():
-    def __init__(self, jmeno, lidi, plochy = '?', hustota = '?'):
+    def __init__(self, jmeno, lidi, plochy = '?', hustota = -6666666):
         self.jmeno = jmeno
         self.lidi = lidi
         self.plochy = plochy
@@ -44,11 +44,11 @@ with open('staty_plochy.log', 'r', encoding='utf-8') as soubor:
 hustota(staty)
 
 def e_sort(emp):
-    return emp.jmeno
+    return emp.hustota
 
-for stat in sorted(staty, key=e_sort):
-    print(stat)
+for stat in sorted(staty, key=e_sort, reverse=True):
+    print(str(stat).replace("-6666666","?"))
 
 with open('staty.log', 'w', encoding='utf-8') as soubor:
-    for line in sorted(staty, key=e_sort):
+    for line in sorted(staty, key=e_sort, reverse=True):
         soubor.write(str(line) + '\n')
